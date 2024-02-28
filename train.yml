@@ -1,0 +1,15 @@
+dataloader:
+  batch_size: 64
+  image_height: 64
+  image_width: 64
+  in_channel: 1
+  shuffle: true
+
+model:
+  beta1: 0.5
+  beta2: 0.999
+  epochs: 200
+  latent_space: 50
+  learning_rate: 0.0002
+  num_labels: 4
+  steps: 50
