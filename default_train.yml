@@ -13,3 +13,9 @@ model:
   learning_rate: 0.0002
   num_labels: 4
   steps: 50
+
+train:
+  factor: 0.5
+  num_steps: 2
+  beta2: 0.999
+  noise_channel: 1

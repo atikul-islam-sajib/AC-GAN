@@ -1,2 +1,5 @@
 to_extract = "./data/raw/"
 to_save = "./data/processed/"
+TRAIN_MODELS = "./checkpoints/train_models/"
+BEST_MODELS = "./checkpoints/best_models/"
+TRAIN_YAML_PATH = "../"
