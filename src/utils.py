@@ -20,3 +20,7 @@ def clean(path=None):
             os.remove(os.path.join(path, file))
     else:
         raise ValueError("path is required".capitalize())
+
+
+def total_params(model=None):
+    return sum(p.numel() for p in model.parameters())
