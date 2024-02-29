@@ -6,6 +6,7 @@ import numpy as np
 import torch
 import torch.optim as optim
 import torch.nn as nn
+from torchvision.utils import save_image
 
 logging.basicConfig(
     level=logging.INFO,
@@ -22,7 +23,7 @@ from utils import (
     load_dataloader,
     train_parameters as params,
 )
-from config import TRAIN_MODELS, BEST_MODELS
+from config import TRAIN_MODELS, BEST_MODELS, TRAIN_IMAGE_PATH
 from generator import Generator
 from discriminator import Discriminator
 
@@ -296,6 +297,59 @@ class Trainer:
                 )
             )
 
+    def save_epoch_images(self, **kwargs):
+        """
+        Saves a grid of generated images at specified epochs during training.
+
+        This method generates a set of images using the current state of the generator model and saves them as a single image file, allowing for visual inspection of the model's progress over time.
+
+        **Parameters**
+
+        +----------------+------------------+-----------------------------------------------------------+
+        | Parameter      | Type             | Description                                               |
+        +================+==================+===========================================================+
+        | epoch          | int              | The current epoch number. Used to determine if images     |
+        |                |                  | should be saved based on the interval specified in        |
+        |                |                  | training parameters.                                      |
+        +----------------+------------------+-----------------------------------------------------------+
+        | noise_samples  | torch.Tensor     | A batch of noise samples to feed into the generator       |
+        |                |                  | for image generation.                                     |
+        +----------------+------------------+-----------------------------------------------------------+
+        | generated_labels | torch.Tensor   | The labels associated with the noise samples, used for    |
+        |                  |                | conditional image generation.                             |
+        +----------------+------------------+-----------------------------------------------------------+
+
+        **Behavior**
+
+        - The method checks if the current epoch meets the saving criteria based on the interval specified in `params["train"]["num_steps"]`.
+        - If the condition is met, it generates images using the generator model and saves them in the TRAIN_IMAGE_PATH directory with a filename indicating the epoch number.
+        - Raises an exception if the TRAIN_IMAGE_PATH does not exist.
+
+        **Exceptions**
+
+        +------------------+-----------------------------------------------------------------------+
+        | Exception        | Condition                                                            |
+        +==================+=======================================================================+
+        | Exception        | Raised if the TRAIN_IMAGE_PATH directory does not exist.              |
+        +------------------+-----------------------------------------------------------------------+
+        """
+        if os.path.exists(TRAIN_IMAGE_PATH):
+
+            if kwargs["epoch"] % self.params["train"]["num_steps"] == 0:
+                images = self.netG(kwargs["noise_samples"], kwargs["generated_labels"])
+
+                image_path = os.path.join(
+                    TRAIN_IMAGE_PATH, "image_{}.png".format(str(kwargs["epoch"]))
+                )
+                save_image(
+                    images,
+                    image_path,
+                    nrow=8,
+                    normalize=True,
+                )
+        else:
+            raise Exception("TRAIN_IMAGE_PATH does not exist".capitalize())
+
     def train(self):
         """
         Executes the training loop for the specified number of epochs.
@@ -366,6 +420,12 @@ class Trainer:
 
             self.G_D_loss_epoch["G_loss"].append(np.mean(self.G_loss))
             self.G_D_loss_epoch["D_loss"].append(np.mean(self.D_loss))
+
+            self.save_epoch_images(
+                noise_samples=noise_samples,
+                epoch=epoch + 1,
+                generated_labels=generated_labels,
+            )
 
 
 if __name__ == "__main__":
