@@ -16,6 +16,11 @@ model:
 
 train:
   factor: 0.5
-  num_steps: 2
+  num_steps: 50
   beta2: 0.999
   noise_channel: 1
+
+figure:
+  height: 10
+  width: 5
+  num_row: 2

@@ -281,7 +281,8 @@ class Trainer:
                     kwargs["len_dataloader"],
                     kwargs["d_loss"],
                     kwargs["g_loss"],
-                )
+                ),
+                "\n",
             )
         else:
             logging.info(
@@ -339,9 +340,6 @@ class Trainer:
                     generated_labels=generated_labels,
                 )
 
-                self.D_loss.append(d_loss)
-                self.G_loss.append(g_loss)
-
                 if index % self.num_steps == 0:
                     self.show_progress(
                         epoch=epoch + 1,
@@ -352,13 +350,16 @@ class Trainer:
                         g_loss=g_loss,
                     )
 
+                    self.D_loss.append(d_loss)
+                    self.G_loss.append(g_loss)
+
             self.show_progress(
                 epoch=epoch + 1,
                 num_epochs=self.num_epochs,
                 index=len(self.dataloader),
                 len_dataloader=len(self.dataloader),
-                d_loss=np.mean(d_loss),
-                g_loss=np.mean(g_loss),
+                d_loss=np.mean(self.D_loss),
+                g_loss=np.mean(self.G_loss),
             )
 
             self.save_checkpoints(epoch=epoch + 1, g_loss=np.mean(self.G_loss))
@@ -405,7 +406,9 @@ if __name__ == "__main__":
         default="cuda",
         help="The device to run the model on".capitalize(),
     )
-    parser.add_argument("--train", type=str, help="Train the model".capitalize())
+    parser.add_argument(
+        "--train", action="store_true", help="Train the model".capitalize()
+    )
 
     args = parser.parse_args()
 
