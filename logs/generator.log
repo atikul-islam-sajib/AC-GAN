@@ -1,0 +1,20 @@
+2024-02-29 16:47:27,118 - root - INFO - Generator Model: Generator(
+  (labels): Embedding(4, 50)
+  (model): Sequential(
+    (ConvTranspose1): ConvTranspose2d(100, 512, kernel_size=(4, 4), stride=(1, 1), bias=False)
+    (BatchNorm1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (ReLU1): ReLU(inplace=True)
+    (ConvTranspose2): ConvTranspose2d(512, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (BatchNorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (ReLU2): ReLU(inplace=True)
+    (ConvTranspose3): ConvTranspose2d(256, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (BatchNorm3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (ReLU3): ReLU(inplace=True)
+    (ConvTranspose4): ConvTranspose2d(128, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (BatchNorm4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (ReLU4): ReLU(inplace=True)
+    (outConvTranspose): ConvTranspose2d(64, 1, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (outLayer): Tanh()
+  )
+)
+2024-02-29 16:47:27,118 - root - INFO - Total params in Generator # 3574856

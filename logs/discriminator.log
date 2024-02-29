@@ -1,0 +1,19 @@
+2024-02-29 16:48:34,329 - root - INFO - Discriminator model defined
+2024-02-29 16:48:34,337 - root - INFO - Discriminator model
+ Discriminator(
+  (model): Sequential(
+    (conv1): Conv2d(1, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (leaky_relu1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (conv2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (batchNorm2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (leaky_relu2): LeakyReLU(negative_slope=0.2, inplace=True)
+    (conv3): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (batchNorm3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (leaky_relu3): LeakyReLU(negative_slope=0.2, inplace=True)
+    (conv4): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (batchNorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (leaky_relu4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (out): Conv2d(512, 5, kernel_size=(4, 4), stride=(1, 1), bias=False)
+  )
+)
+2024-02-29 16:48:34,337 - root - INFO - Total trainable parameters # 2796288 
