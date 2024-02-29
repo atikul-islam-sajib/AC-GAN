@@ -9,6 +9,11 @@ def pickle(value=None, filename=None):
         raise ValueError("value and filename are required".capitalize())
 
 
+def load_pickle(filename=None):
+    if filename is not None:
+        return pkl.load(filename=filename)
+
+
 def clean(path=None):
     if path:
         for file in os.listdir(path):
