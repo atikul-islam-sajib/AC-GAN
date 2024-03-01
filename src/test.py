@@ -259,5 +259,6 @@ if __name__ == "__main__":
         )
 
         test.test()
+        test.create_gif_file()
 
         logging.info("Test complete.")
