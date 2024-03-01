@@ -17,7 +17,13 @@ sys.path.append("src/")
 
 from generator import Generator
 from utils import device_init, load_pickle, train_parameters as params
-from config import to_save, BEST_MODELS, TEST_IMAGE_PATH, TRAIN_GIF_PATH
+from config import (
+    to_save,
+    BEST_MODELS,
+    TEST_IMAGE_PATH,
+    TRAIN_GIF_PATH,
+    TRAIN_IMAGE_PATH,
+)
 
 
 class Test:
@@ -171,8 +177,8 @@ class Test:
         """
         if os.path.exists(TRAIN_GIF_PATH):
             images = [
-                imageio.imread(os.path.join(TRAIN_GIF_PATH, image))
-                for image in os.listdir(TRAIN_GIF_PATH)
+                imageio.imread(os.path.join(TRAIN_IMAGE_PATH, image))
+                for image in os.listdir(TRAIN_IMAGE_PATH)
             ]
             imageio.mimsave(
                 os.path.join(TRAIN_GIF_PATH, "training.gif"),
@@ -243,6 +249,7 @@ if __name__ == "__main__":
         )
 
         test.test()
+        test.create_gif_file()
 
         logging.info("Test complete.")
 
