@@ -19,6 +19,7 @@ def load_pickle(filename=None):
 
 
 def clean(path=None):
+    print(path)
     if path:
         for file in os.listdir(path):
             os.remove(os.path.join(path, file))

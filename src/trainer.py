@@ -22,6 +22,7 @@ from utils import (
     device_init,
     load_dataloader,
     train_parameters as params,
+    clean,
 )
 from config import TRAIN_MODELS, BEST_MODELS, TRAIN_IMAGE_PATH
 from generator import Generator
@@ -114,6 +115,8 @@ class Trainer:
         self.device = device_init(device=self.device)
         self.dataloader = load_dataloader()
         self.params = params()
+        clean(path=TRAIN_MODELS)
+        clean(path=BEST_MODELS)
 
         self.netG = Generator(
             latent_space=self.latent_space,

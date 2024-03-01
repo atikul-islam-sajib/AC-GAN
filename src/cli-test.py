@@ -2,7 +2,13 @@ import sys
 import logging
 import argparse
 import yaml
-import os
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+    filemode="w",
+    filename="./logs/cli-test.log",
+)
 
 sys.path.append("src/")
 
@@ -13,12 +19,6 @@ from discriminator import Discriminator
 from trainer import Trainer
 from test import Test
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
-    filemode="w",
-    filename="./logs/cli-test.log",
-)
 
 params = dict()
 
