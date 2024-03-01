@@ -20,3 +20,122 @@
 2024-03-01 01:33:35,177 - root - INFO - Creating dataloader
 2024-03-01 01:33:35,177 - root - INFO - Extracting images
 2024-03-01 01:33:36,014 - root - INFO - Creating dataloader
+2024-03-01 19:25:03,141 - root - INFO - Creating dataloader
+2024-03-01 19:25:03,141 - root - INFO - Extracting images
+2024-03-01 19:25:04,506 - root - INFO - Creating dataloader
+2024-03-01 19:25:38,762 - root - INFO - Creating dataloader
+2024-03-01 19:25:38,762 - root - INFO - Extracting images
+2024-03-01 19:25:39,528 - root - INFO - Creating dataloader
+2024-03-01 19:26:31,597 - root - INFO - Creating dataloader
+2024-03-01 19:26:31,597 - root - INFO - Extracting images
+2024-03-01 19:26:32,374 - root - INFO - Creating dataloader
+2024-03-01 19:27:34,542 - root - INFO - Creating dataloader
+2024-03-01 19:27:34,542 - root - INFO - Extracting images
+2024-03-01 19:27:35,295 - root - INFO - Creating dataloader
+2024-03-01 19:32:23,284 - root - INFO - Creating dataloader
+2024-03-01 19:32:23,284 - root - INFO - Extracting images
+2024-03-01 19:32:24,314 - root - INFO - Creating dataloader
+2024-03-01 19:32:53,428 - root - INFO - Creating dataloader
+2024-03-01 19:32:53,428 - root - INFO - Extracting images
+2024-03-01 19:32:54,204 - root - INFO - Creating dataloader
+2024-03-01 19:33:33,663 - root - INFO - Creating dataloader
+2024-03-01 19:33:33,663 - root - INFO - Extracting images
+2024-03-01 19:33:34,619 - root - INFO - Creating dataloader
+2024-03-01 19:34:51,182 - root - INFO - Creating dataloader
+2024-03-01 19:34:51,183 - root - INFO - Extracting images
+2024-03-01 19:34:52,126 - root - INFO - Creating dataloader
+2024-03-01 19:35:14,233 - root - INFO - Creating dataloader
+2024-03-01 19:35:14,234 - root - INFO - Extracting images
+2024-03-01 19:35:15,239 - root - INFO - Creating dataloader
+2024-03-01 19:35:32,780 - root - INFO - Creating dataloader
+2024-03-01 19:35:32,780 - root - INFO - Extracting images
+2024-03-01 19:35:33,832 - root - INFO - Creating dataloader
+2024-03-01 19:36:09,925 - root - INFO - Creating dataloader
+2024-03-01 19:36:09,925 - root - INFO - Extracting images
+2024-03-01 19:36:10,779 - root - INFO - Creating dataloader
+2024-03-01 19:36:58,914 - root - INFO - Creating dataloader
+2024-03-01 19:36:58,914 - root - INFO - Extracting images
+2024-03-01 19:36:59,832 - root - INFO - Creating dataloader
+2024-03-01 19:37:25,869 - root - INFO - Creating dataloader
+2024-03-01 19:37:25,869 - root - INFO - Extracting images
+2024-03-01 19:37:26,663 - root - INFO - Creating dataloader
+2024-03-01 19:38:00,395 - root - INFO - Creating dataloader
+2024-03-01 19:38:00,396 - root - INFO - Extracting images
+2024-03-01 19:38:01,321 - root - INFO - Creating dataloader
+2024-03-01 19:52:53,836 - root - INFO - No model path provided. Using the default model.
+2024-03-01 19:53:02,553 - root - INFO - Test complete.
+2024-03-01 19:55:18,689 - root - INFO - Creating dataloader
+2024-03-01 19:55:18,689 - root - INFO - Extracting images
+2024-03-01 19:55:20,045 - root - INFO - Creating dataloader
+2024-03-01 19:58:40,859 - root - INFO - No model path provided. Using the default model.
+2024-03-01 19:58:43,660 - root - INFO - Test complete.
+2024-03-01 19:59:57,418 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:00:00,398 - root - INFO - Test complete.
+2024-03-01 20:00:28,081 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:00:30,747 - root - INFO - Test complete.
+2024-03-01 20:00:53,359 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:00:56,044 - root - INFO - Test complete.
+2024-03-01 20:02:00,983 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:02:03,818 - root - INFO - Test complete.
+2024-03-01 20:02:09,358 - root - INFO - Creating dataloader
+2024-03-01 20:02:09,358 - root - INFO - Extracting images
+2024-03-01 20:02:10,277 - root - INFO - Creating dataloader
+2024-03-01 20:04:52,424 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:04:55,190 - root - INFO - Test complete.
+2024-03-01 20:05:22,047 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:05:25,420 - root - INFO - Test complete.
+2024-03-01 20:05:51,285 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:05:55,198 - root - INFO - Test complete.
+2024-03-01 20:06:58,981 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:07:01,675 - root - INFO - Test complete.
+2024-03-01 20:08:13,915 - root - INFO - Creating dataloader
+2024-03-01 20:08:13,915 - root - INFO - Extracting images
+2024-03-01 20:08:14,927 - root - INFO - Creating dataloader
+2024-03-01 20:08:35,127 - root - INFO - No model path provided. Using the default model.
+2024-03-01 20:08:38,317 - root - INFO - Test complete.
+2024-03-01 20:16:43,029 - root - INFO - Creating dataloader
+2024-03-01 20:16:43,029 - root - INFO - Extracting images
+2024-03-01 20:16:44,176 - root - INFO - Creating dataloader
+2024-03-01 20:17:07,619 - root - INFO - Test complete.
+2024-03-01 20:18:02,037 - root - INFO - Creating dataloader
+2024-03-01 20:18:02,037 - root - INFO - Extracting images
+2024-03-01 20:18:02,861 - root - INFO - Creating dataloader
+2024-03-01 20:18:25,222 - root - INFO - Test complete.
+2024-03-01 20:19:34,651 - root - INFO - Creating dataloader
+2024-03-01 20:19:34,652 - root - INFO - Extracting images
+2024-03-01 20:19:35,621 - root - INFO - Creating dataloader
+2024-03-01 20:19:56,821 - root - INFO - Test complete.
+2024-03-01 20:23:16,220 - root - INFO - Creating dataloader
+2024-03-01 20:23:16,220 - root - INFO - Extracting images
+2024-03-01 20:23:17,426 - root - INFO - Creating dataloader
+2024-03-01 20:23:39,426 - root - INFO - Test complete.
+2024-03-01 20:24:16,391 - root - INFO - Test complete.
+2024-03-01 20:24:22,158 - root - INFO - Creating dataloader
+2024-03-01 20:24:22,158 - root - INFO - Extracting images
+2024-03-01 20:24:23,086 - root - INFO - Creating dataloader
+2024-03-01 20:24:47,274 - root - INFO - Test complete.
+2024-03-01 20:30:44,657 - root - INFO - Creating dataloader
+2024-03-01 20:30:44,657 - root - INFO - Extracting images
+2024-03-01 20:30:45,644 - root - INFO - Creating dataloader
+2024-03-01 20:32:04,918 - root - INFO - Creating dataloader
+2024-03-01 20:32:04,918 - root - INFO - Extracting images
+2024-03-01 20:32:05,813 - root - INFO - Creating dataloader
+2024-03-01 20:33:00,418 - root - INFO - Creating dataloader
+2024-03-01 20:33:00,419 - root - INFO - Extracting images
+2024-03-01 20:33:01,242 - root - INFO - Creating dataloader
+2024-03-01 20:34:22,062 - root - INFO - Creating dataloader
+2024-03-01 20:34:22,062 - root - INFO - Extracting images
+2024-03-01 20:34:23,038 - root - INFO - Creating dataloader
+2024-03-01 20:35:42,780 - root - INFO - Creating dataloader
+2024-03-01 20:35:42,780 - root - INFO - Extracting images
+2024-03-01 20:35:43,669 - root - INFO - Creating dataloader
+2024-03-01 20:36:39,502 - root - INFO - Creating dataloader
+2024-03-01 20:36:39,502 - root - INFO - Extracting images
+2024-03-01 20:36:40,514 - root - INFO - Creating dataloader
+2024-03-01 20:43:48,370 - root - INFO - Creating dataloader
+2024-03-01 20:43:48,370 - root - INFO - Extracting images
+2024-03-01 20:43:49,385 - root - INFO - Creating dataloader
+2024-03-01 20:44:15,889 - root - INFO - Test complete.
+2024-03-01 20:53:35,919 - root - INFO - Creating dataloader
+2024-03-01 20:53:35,919 - root - INFO - Extracting images
+2024-03-01 20:53:36,953 - root - INFO - Creating dataloader
