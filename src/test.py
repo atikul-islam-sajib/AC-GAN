@@ -2,6 +2,7 @@ import sys
 import os
 import logging
 import argparse
+import imageio
 import torch
 import matplotlib.pyplot as plt
 
@@ -16,7 +17,7 @@ sys.path.append("src/")
 
 from generator import Generator
 from utils import device_init, load_pickle, train_parameters as params
-from config import to_save, BEST_MODELS, TEST_IMAGE_PATH
+from config import to_save, BEST_MODELS, TEST_IMAGE_PATH, TRAIN_GIF_PATH
 
 
 class Test:
@@ -159,6 +160,28 @@ class Test:
         ), torch.full((self.num_samples,), self.specific_labels, dtype=torch.long).to(
             self.device
         )
+
+    def create_gif_file(self):
+        """
+        Generates GIF file  for image generation.
+
+        **Returns**
+
+        A GIF containing that training images based on epochs
+        """
+        if os.path.exists(TRAIN_GIF_PATH):
+            images = [
+                imageio.imread(os.path.join(TRAIN_GIF_PATH, image))
+                for image in os.listdir(TRAIN_GIF_PATH)
+            ]
+            imageio.mimsave(
+                os.path.join(TRAIN_GIF_PATH, "training.gif"),
+                images,
+                "GIF",
+                duration=0.5,
+            )
+        else:
+            raise Exception("No test image path found".title())
 
     def test(self):
         """
