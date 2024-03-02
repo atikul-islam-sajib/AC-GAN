@@ -23,8 +23,9 @@ from utils import (
     load_dataloader,
     train_parameters as params,
     clean,
+    pickle,
 )
-from config import TRAIN_MODELS, BEST_MODELS, TRAIN_IMAGE_PATH
+from config import TRAIN_MODELS, BEST_MODELS, TRAIN_IMAGE_PATH, METRICS_PATH
 from generator import Generator
 from discriminator import Discriminator
 
@@ -429,6 +430,15 @@ class Trainer:
                 epoch=epoch + 1,
                 generated_labels=generated_labels,
             )
+
+        pickle(
+            value=self.G_D_loss_epoch,
+            filename=(
+                os.path.join(METRICS_PATH, "train_loss.pkl")
+                if os.path.exists(METRICS_PATH)
+                else "Path not found".capitalize()
+            ),
+        )
 
 
 if __name__ == "__main__":

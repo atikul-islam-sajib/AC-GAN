@@ -100,9 +100,15 @@ class MimicSamples(Test):
         :return: A tuple of (noise samples tensor, labels tensor).
         :rtype: (torch.Tensor, torch.Tensor)
         """
-        return torch.randn(self.num_samples, self.latent_space, 1, 1).to(
+        noise = torch.randn(self.num_samples, self.latent_space, 1, 1).to(self.device)
+        for random_noise in torch.linspace(0.01, 0.99, self.num_samples).to(
             self.device
-        ), torch.full((self.num_samples,), label, dtype=torch.long).to(self.device)
+        ):
+            samples = noise * random_noise
+        labels = torch.full((self.num_samples,), label, dtype=torch.long).to(
+            self.device
+        )
+        return samples, labels
 
     def save_generated_images(self, images=None, label_name=None):
         """
@@ -150,6 +156,7 @@ class MimicSamples(Test):
 
         for label, label_name in tqdm(labels.items()):
             noise_samples, specific_label = self.generate_nose_samples(label)
+
             mimic_images = netG(noise_samples, specific_label)
 
             self.save_generated_images(mimic_images, label_name)
