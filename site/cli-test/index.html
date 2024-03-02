@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Command Line - test - AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Command Line - test";
+        var mkdocs_page_input_path = "cli-test.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dataloader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trainer/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mimic/">Mimic</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Command Line - test</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup-requirements">Setup Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-line-arguments">Command-Line Arguments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#training-a-model">Training a Model</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-a-model">Testing a Model</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation-details">Implementation Details</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-mimic/">Command Line - mimic-data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Command Line - test</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cli-tool-for-gan-model-training-and-testing">CLI Tool for GAN Model Training and Testing</h1>
+<p>This document provides an overview and guide on using a command-line interface (CLI) tool designed for training and testing Generative Adversarial Networks (GANs) on image data. The tool simplifies the process of configuring the training environment, executing the training process, and testing the trained models by generating sample images.</p>
+<h2 id="setup-requirements">Setup Requirements</h2>
+<p>Before using the CLI tool, ensure you have the following setup:</p>
+<ul>
+<li>Python environment with necessary libraries installed (e.g., PyTorch, argparse, yaml).</li>
+<li>The dataset is prepared in a zip file format for training.</li>
+<li>The project directory includes the necessary Python scripts (<code>generator.py</code>, <code>discriminator.py</code>, <code>dataloader.py</code>, etc.) and a <code>config.py</code> file for paths and parameters configuration.</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Data Loading</strong>: Automate the process of loading and preprocessing image datasets.</li>
+<li><strong>Model Training</strong>: Train GAN models with customizable parameters via command-line arguments.</li>
+<li><strong>Model Testing</strong>: Test trained models by generating images and optionally creating a GIF to visualize the training progression.</li>
+<li><strong>Parameter Configuration</strong>: Define training parameters dynamically and save them to a YAML file for easy sharing and reproducibility.</li>
+</ul>
+<h2 id="command-line-arguments">Command-Line Arguments</h2>
+<p>The CLI tool supports various arguments to control the dataset, training parameters, and execution mode:</p>
+<ul>
+<li><code>--dataset</code>: Path to the dataset zip file.</li>
+<li><code>--image_size</code>: Image resolution to be used during training.</li>
+<li><code>--batch_size</code>: Number of images per training batch.</li>
+<li><code>--normalized</code>: Flag indicating whether to normalize images.</li>
+<li><code>--num_epochs</code>: Total number of training epochs.</li>
+<li><code>--latent_space</code>: Dimensionality of the latent space vector.</li>
+<li><code>--in_channels</code>: Number of input channels (e.g., 3 for RGB images).</li>
+<li><code>--learning_rate</code>: Optimizer learning rate.</li>
+<li><code>--beta1</code>: Beta1 hyperparameter for the Adam optimizer.</li>
+<li><code>--display</code>: Flag to enable progress display.</li>
+<li><code>--device</code>: Computational device ('cuda', 'cpu', or 'mps').</li>
+<li><code>--train</code>: Flag to initiate training mode.</li>
+<li><code>--test</code>: Flag to initiate testing mode.</li>
+<li><code>--model_path</code>: Path to a pre-trained model (for testing).</li>
+<li><code>--num_samples</code>: Number of samples to generate during testing.</li>
+<li><code>--label</code>: Label for generated samples during testing.</li>
+</ul>
+<h2 id="example-usage">Example Usage</h2>
+<h3 id="training-a-model">Training a Model</h3>
+<pre><code class="language-sh">python cli_script.py --train --dataset path/to/dataset.zip --image_size 64 --batch_size 64 --num_epochs 200 --latent_space 50 --in_channels 1 --learning_rate 0.0002 --beta1 0.5 --display True --device cuda
+</code></pre>
+<p>This command initiates the training process with the specified dataset and parameters.</p>
+<h3 id="testing-a-model">Testing a Model</h3>
+<pre><code class="language-sh">python cli_script.py --test --model_path path/to/model.pth --num_samples 4 --label 0 --latent_space 50 --device cuda
+</code></pre>
+<p>This command generates images using a trained model specified by <code>--model_path</code>.</p>
+<h2 id="implementation-details">Implementation Details</h2>
+<p>The CLI tool orchestrates the training and testing process by:</p>
+<ul>
+<li>Dynamically creating and saving training parameters to a YAML file.</li>
+<li>Loading and preprocessing the dataset.</li>
+<li>Initializing the Generator and Discriminator models.</li>
+<li>Training the models according to the specified parameters.</li>
+<li>Testing the trained models by generating images.</li>
+<li>Optionally, creating a GIF from training images to visualize progression.</li>
+</ul>
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li>Ensure the <code>config.py</code> file correctly specifies paths for saving models, logs, and generated images.</li>
+<li>The <code>--display</code> flag allows for real-time progress monitoring in the console. Disable it if running in environments without a display (e.g., remote servers).</li>
+<li>Adjust the <code>--device</code> argument according to your hardware capabilities to utilize GPU acceleration if available.</li>
+</ul>
+<p>This CLI tool streamlines the process of working with GANs for image generation tasks, making it accessible to users with varying levels of expertise in machine learning and deep learning.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../mimic/" class="btn btn-neutral float-left" title="Mimic"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cli-mimic/" class="btn btn-neutral float-right" title="Command Line - mimic-data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../mimic/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cli-mimic/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

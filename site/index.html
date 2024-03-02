@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="dataloader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="trainer/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="test/">Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="mimic/">Mimic</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cli-test/">Command Line - test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cli-mimic/">Command Line - mimic-data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ac-gan-generative-adversarial-network-for-custom-dataset-auxiliary-classifier-gan">AC-GAN - Generative Adversarial Network for Custom Dataset: Auxiliary Classifier GAN</h1>
+<h2 id="overview">Overview</h2>
+<p>AC-GAN (GAN-based Project for Synthesizing Gray-scale/RGB images) is a machine learning project focused on generating synthetic images with labels using Generative Adversarial Networks (GANs). Specifically, it is designed to work with the Custom medical dataset, a large database of medical commonly used for training various image processing systems.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Utilizes PyTorch for implementing GAN models.</li>
+<li>Provides scripts for easy training and generating synthetic images.</li>
+<li>Command Line Interface for easy interaction.</li>
+<li>Includes a custom data loader for the custom medical image dataset.</li>
+<li>Customizable training parameters for experimenting with GAN.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Clone the repository:</p>
+<pre><code>git clone https://github.com/atikul-islam-sajib/AC-GAN.git
+cd AC-GAN
+</code></pre>
+<h1 id="install-dependencies">Install dependencies</h1>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+<h2 id="usage">Usage</h2>
+<p>Examples of commands - test and their explanations(Do the training and testing).</p>
+<pre><code class="language-bash">python /path/to/AC-GAN/src/cli--test.py --help
+</code></pre>
+<p>Examples of commands - mimic and their explanations(Creating the synthetic data).</p>
+<pre><code class="language-bash">python /path/to/AC-GAN/src/cli--mimic.py --help
+</code></pre>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--dataset</code></td>
+<td>Path to the zip file containing the dataset.</td>
+<td><code>str</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>--image_size</code></td>
+<td>Size of the images to be used.</td>
+<td><code>int</code></td>
+<td>64</td>
+</tr>
+<tr>
+<td><code>--batch_size</code></td>
+<td>Number of images per training batch.</td>
+<td><code>int</code></td>
+<td>64</td>
+</tr>
+<tr>
+<td><code>--normalized</code></td>
+<td>Flag indicating if images should be normalized.</td>
+<td><code>bool</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>--num_epochs</code></td>
+<td>The number of epochs for training.</td>
+<td><code>int</code></td>
+<td>200</td>
+</tr>
+<tr>
+<td><code>--latent_space</code></td>
+<td>Dimensionality of the latent space.</td>
+<td><code>int</code></td>
+<td>50</td>
+</tr>
+<tr>
+<td><code>--in_channels</code></td>
+<td>The number of input channels for the model.</td>
+<td><code>int</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>--learning_rate</code></td>
+<td>Learning rate for the optimizer.</td>
+<td><code>float</code></td>
+<td>0.0002</td>
+</tr>
+<tr>
+<td><code>--beta1</code></td>
+<td>The beta1 parameter for the Adam optimizer.</td>
+<td><code>float</code></td>
+<td>0.5</td>
+</tr>
+<tr>
+<td><code>--display</code></td>
+<td>Whether to display training progress and output images.</td>
+<td><code>bool</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>--device</code></td>
+<td>The device to run the model on ('cuda', 'cpu', or 'mps').</td>
+<td><code>str</code></td>
+<td>"cuda"</td>
+</tr>
+<tr>
+<td><code>--train</code></td>
+<td>Flag to initiate training mode.</td>
+<td><code>action</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>--test</code></td>
+<td>Flag to initiate testing mode.</td>
+<td><code>action</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>--model_path</code></td>
+<td>Path to the pre-trained model for testing.</td>
+<td><code>str</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>--num_samples</code></td>
+<td>Number of samples to generate during testing.</td>
+<td><code>int</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>--label</code></td>
+<td>Label for the samples to be generated during testing.</td>
+<td><code>int</code></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="training-and-generating-images-cli">Training and Generating Images - CLI</h2>
+<h4 id="training-the-gan-model-with-cuda-mps-cpu">Training the GAN Model with CUDA, MPS, CPU</h4>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Device</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training</strong></td>
+<td>CUDA</td>
+<td><code>python cli_script.py --train --dataset path/to/dataset.zip --image_size 64 --batch_size 64 --num_epochs 200 --latent_space 50 --in_channels 1 --learning_rate 0.0002 --beta1 0.5 --display True --device cuda</code></td>
+</tr>
+<tr>
+<td></td>
+<td>MPS</td>
+<td><code>python cli_script.py --train --dataset path/to/dataset.zip --image_size 64 --batch_size 64 --num_epochs 200 --latent_space 50 --in_channels 1 --learning_rate 0.0002 --beta1 0.5 --display True --device mps</code></td>
+</tr>
+<tr>
+<td></td>
+<td>CPU</td>
+<td><code>python cli_script.py --train --dataset path/to/dataset.zip --image_size 64 --batch_size 64 --num_epochs 200 --latent_space 50 --in_channels 1 --learning_rate 0.0002 --beta1 0.5 --display True --device cpu</code></td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>CUDA</td>
+<td><code>python cli_script.py --test --model_path path/to/model.pth --num_samples 4 --label 0 --latent_space 50 --device cuda</code></td>
+</tr>
+<tr>
+<td></td>
+<td>MPS</td>
+<td><code>python cli_script.py --test --model_path path/to/model.pth --num_samples 4 --label 0 --latent_space 50 --device mps</code></td>
+</tr>
+<tr>
+<td></td>
+<td>CPU</td>
+<td><code>python cli_script.py --test --model_path path/to/model.pth --num_samples 4 --label 0 --latent_space 50 --device cpu</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="generating-the-mimic-data">Generating the Mimic Data</h4>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td><code>python cli_mimc.py --device cpu --latent_space 50 --num_samples 3000</code></td>
+</tr>
+<tr>
+<td>CUDA</td>
+<td><code>python cli_mimc.py --device cuda --latent_space 50 --num_samples 3000</code></td>
+</tr>
+<tr>
+<td>MPS</td>
+<td><code>python cli_mimc.py --device mps --latent_space 50 --num_samples 3000</code></td>
+</tr>
+</tbody>
+</table>
+<p>Make sure to the synthetic data would be stored in image (png) format in <code>/data/mimic_data</code> folder.</p>
+<h2 id="training-and-generating-images-importing-the-modules">Training and Generating Images - Importing the Modules</h2>
+<h3 id="using-cuda">Using CUDA</h3>
+<p>To leverage CUDA for accelerated computing, follow the instructions below. This setup is ideal for training and testing models with NVIDIA GPUs, ensuring fast processing and efficient handling of large datasets.</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Ensure CUDA-compatible hardware is available and properly configured.</li>
+<li>Verify that the necessary CUDA drivers and libraries are installed on your system.</li>
+</ul>
+<p><strong>Script Execution:</strong></p>
+<ol>
+<li>
+<p><strong>Data Preparation:</strong></p>
+</li>
+<li>
+<p>Initialize and configure the data loader for image preprocessing and dataset creation.</p>
+</li>
+</ol>
+<pre><code class="language-python">   from src.dataloader import Loader
+
+   loader = Loader(image_path=&quot;/path/to/dataset.zip&quot;, batch_size=64, image_size=64, normalized=True)
+   loader.unzip_images()
+   dataloader, labels = loader.create_dataloader()
+</code></pre>
+<ol>
+<li>
+<p><strong>Model Training:</strong></p>
+</li>
+<li>
+<p>Set up and initiate the training process using specified parameters.</p>
+</li>
+</ol>
+<pre><code class="language-python">   from src.trainer import Trainer
+
+   trainer = Trainer(image_size=64, num_epochs=200, latent_space=50, in_channels=1, learning_rate=0.0002, beta1=0.5, display=True, device=&quot;cuda&quot;)
+   trainer.train()
+</code></pre>
+<ol>
+<li>
+<p><strong>Model Testing:</strong></p>
+</li>
+<li>
+<p>Execute model testing to evaluate performance and generate synthetic images.</p>
+</li>
+</ol>
+<pre><code class="language-python">   from src.test import Test
+
+   test = Test(best_model_path=&quot;/checkpoints/best_models/netG_51.pth&quot;, num_samples=50, label=0, latent_space=100, device=&quot;cuda&quot;)
+   test.test()
+   test.create_gif_file()
+</code></pre>
+<ol>
+<li>
+<p><strong>Synthetic Data Generation:</strong></p>
+</li>
+<li>
+<p>Generate a synthetic dataset using the trained model.</p>
+</li>
+</ol>
+<pre><code class="language-python">   from src.mimic import MimicSamples
+
+   mimic = MimicSamples(model_path=&quot;/checkpoints/best_models/netG_51.pth&quot;, latent_space=50, device=&quot;cuda&quot;, num_samples=3000)
+   mimic.generate_mimic_samples()
+</code></pre>
+<p>The generated samples will be saved in the "data/mimic_data" folder.</p>
+<h3 id="using-mps">Using MPS</h3>
+<p>For leveraging MPS on Apple's hardware for efficient computing, follow these steps. This approach is optimized for macOS devices equipped with Apple Silicon or other compatible GPUs.</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Ensure your macOS device supports MPS and is equipped with compatible hardware.</li>
+<li>Confirm that your environment is set up to utilize MPS for PyTorch or other machine learning frameworks.</li>
+</ul>
+<p><strong>Script Execution:</strong></p>
+<p>The steps are similar to those for CUDA, with the device parameter set to <code>"mps"</code> in all relevant instances. This ensures that MPS is utilized for all computational tasks.</p>
+<h3 id="using-cpu">Using CPU</h3>
+<p>To execute the training and generation processes on a CPU, follow the outlined steps. This setup is universally applicable but may lead to longer processing times compared to CUDA or MPS.</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>No specific hardware requirements other than a functional CPU.</li>
+<li>Ensure your Python environment is correctly set up with all required libraries installed.</li>
+</ul>
+<p><strong>Script Execution:</strong></p>
+<p>The procedure remains consistent with the CUDA and MPS sections, with the device parameter adjusted to <code>"cpu"</code>. This configuration directs all computations to be processed by the CPU.</p>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions to improve the project are welcome. Please follow the standard procedures for contributing to open-source projects.</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under <a href="./LICENSE">MIT LICENSE</a>. Please see the LICENSE file for more details.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to all contributors and users of the LSGAN project. Special thanks to those who have provided feedback and suggestions for improvements.</p>
+<h2 id="contact">Contact</h2>
+<p>For any inquiries or suggestions, feel free to reach out to [atikulislamsajib137@gmail.com].</p>
+<h2 id="additional-information">Additional Information</h2>
+<ul>
+<li>This project is a work in progress and subject to changes.</li>
+<li>Feedback and suggestions are highly appreciated.</li>
+<li>Courtesy: Atikul Islam Sajib</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="dataloader/" class="btn btn-neutral float-right" title="DataLoader">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="dataloader/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2024-03-02 17:20:19.921559+00:00
+-->

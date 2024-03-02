@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Command Line - mimic-data - AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Command Line - mimic-data";
+        var mkdocs_page_input_path = "cli-mimic.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dataloader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trainer/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mimic/">Mimic</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-test/">Command Line - test</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Command Line - mimic-data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-line-arguments">Command-Line Arguments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#generating-mimic-samples">Generating Mimic Samples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#key-methods">Key Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output">Output</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Command Line - mimic-data</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cli-tool-for-mimic-data-generation-using-ac-gan">CLI Tool for Mimic Data Generation Using AC-GAN</h1>
+<p>This document provides a comprehensive guide on using a command-line interface (CLI) tool designed for generating mimic data using a pre-trained AC-GAN model. The tool simplifies the process of synthetic data generation, allowing for the creation of large datasets that mimic the distribution of original data.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Before using the CLI tool, ensure you have the following:</p>
+<ul>
+<li>A Python environment with the necessary libraries installed (e.g., PyTorch, argparse).</li>
+<li>A pre-trained AC-GAN model saved as a <code>.pth</code> file.</li>
+<li>The <code>mimic.py</code> script, which contains the <code>MimicSamples</code> class for generating mimic samples.</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Flexible Data Generation</strong>: Generate thousands of synthetic images that mimic the original dataset's distribution.</li>
+<li><strong>Customizable Parameters</strong>: Control the latent space dimension, computation device, and number of samples to generate through command-line arguments.</li>
+<li><strong>Ease of Use</strong>: Simplify the data generation process with a CLI that requires only a few arguments to produce synthetic data.</li>
+</ul>
+<h2 id="command-line-arguments">Command-Line Arguments</h2>
+<p>The CLI supports various arguments to control the model parameters and execution mode:</p>
+<ul>
+<li><code>--model_path</code>: Path to the saved AC-GAN model. If not provided, attempts to use the best model based on saved checkpoints.</li>
+<li><code>--latent_space</code>: Dimensionality of the latent space for the generator. Default is 50.</li>
+<li><code>--device</code>: The computation device to use ('cuda', 'cpu', 'mps'). Default is 'mps'.</li>
+<li><code>--num_samples</code>: The number of images to generate for each label in the dataset. Default is 3000.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<h3 id="generating-mimic-samples">Generating Mimic Samples</h3>
+<p>To generate mimic samples using a pre-trained AC-GAN model, execute the following command in your terminal:</p>
+<pre><code class="language-bash">python cli_mimic.py --model_path path/to/model.pth --latent_space 50 --device cuda --num_samples 3000
+</code></pre>
+<p>This command will generate 3000 samples for each label using the specified AC-GAN model, with computations performed on a CUDA device.</p>
+<h3 id="key-methods">Key Methods</h3>
+<ul>
+<li><code>generate_mimic_samples()</code>: The main method responsible for generating and saving mimic samples using the AC-GAN model. It loads the model, generates noise samples, and saves the generated images.</li>
+</ul>
+<h2 id="output">Output</h2>
+<p>Generated images are saved in a directory specified by the <code>MIMIC_PATH</code> variable in the <code>config.py</code>. The tool creates a subdirectory for each class label, organizing the synthetic images accordingly.</p>
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li>Ensure the <code>MIMIC_PATH</code> directory exists or is specified correctly in <code>config.py</code> to avoid errors during image saving.</li>
+<li>The <code>--device</code> argument allows for flexible usage across various hardware setups. Use 'cuda' for NVIDIA GPUs, 'cpu' for CPU-based generation, or 'mps' for Apple Silicon GPUs.</li>
+<li>The number of samples and latent space dimensions can be adjusted based on the needs of your dataset augmentation or synthetic data generation tasks.</li>
+</ul>
+<p>By leveraging the capabilities of AC-GANs for synthetic data generation, the <code>MimicSamples</code> CLI tool provides an efficient solution for augmenting datasets, potentially enhancing machine learning model training and performance.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cli-test/" class="btn btn-neutral float-left" title="Command Line - test"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cli-test/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

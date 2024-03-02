@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>DataLoader - AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DataLoader";
+        var mkdocs_page_input_path = "dataloader.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">DataLoader</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-command">Example Command</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output">Output</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trainer/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mimic/">Mimic</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-test/">Command Line - test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-mimic/">Command Line - mimic-data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">DataLoader</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dataloader-for-image-datasets">DataLoader for Image Datasets</h1>
+<p>This DataLoader utility is designed to simplify the handling of image datasets. It encompasses functionalities for extracting images from a zip file, normalizing them, and batching them for processing. Below is a detailed explanation of its capabilities and how to use it.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Image Extraction</strong>: Unzip your image dataset into a specified directory for processing.</li>
+<li><strong>Normalization and Resizing</strong>: Apply normalization and resizing to the images in your dataset.</li>
+<li><strong>Batch Processing</strong>: Easily create a <code>DataLoader</code> for batch processing of your images.</li>
+<li><strong>Class Index Mapping</strong>: Generate a mapping from class names to indices, useful for training models.</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<p>To use this DataLoader, you need to have Python installed along with the following packages:</p>
+<ul>
+<li><code>torch</code></li>
+<li><code>torchvision</code></li>
+<li><code>zipfile</code></li>
+<li><code>os</code></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>Before running the script, ensure you have a configuration file (<code>config.py</code>) with the following variables:</p>
+<ul>
+<li><code>to_extract</code>: Path where the zip file will be extracted.</li>
+<li><code>to_save</code>: Path where the DataLoader and class-to-index mapping will be saved.</li>
+</ul>
+<p>Additionally, a utility module (<code>utils.py</code>) is required for pickling the DataLoader and class-to-index mapping.</p>
+<h2 id="usage">Usage</h2>
+<p>The DataLoader can be used via the command line with the following arguments:</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--dataset</code></td>
+<td>str</td>
+<td>Path to the zip file containing images.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--image_size</code></td>
+<td>int</td>
+<td>Size (height, width) to resize images.</td>
+<td>64</td>
+</tr>
+<tr>
+<td><code>--batch_size</code></td>
+<td>int</td>
+<td>Number of images per batch.</td>
+<td>64</td>
+</tr>
+<tr>
+<td><code>--normalized</code></td>
+<td>bool</td>
+<td>Apply normalization to images.</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-command">Example Command</h3>
+<pre><code class="language-sh">python your_script_name.py --dataset path/to/your/dataset.zip --image_size 128 --batch_size 32 --normalized True
+</code></pre>
+<p>This command will:</p>
+<ol>
+<li>Extract images from <code>dataset.zip</code>.</li>
+<li>Normalize and resize the images to 128x128 pixels.</li>
+<li>Create a DataLoader with a batch size of 32.</li>
+<li>Save the DataLoader and class-to-index mapping to the specified <code>to_save</code> directory.</li>
+</ol>
+<h2 id="output">Output</h2>
+<ul>
+<li>A DataLoader object for the processed image dataset.</li>
+<li>A pickle file (<code>dataloader.pkl</code>) containing the DataLoader.</li>
+<li>A pickle file (<code>dataset.pkl</code>) containing the class-to-index mapping.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../generator/" class="btn btn-neutral float-right" title="Generator">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../generator/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

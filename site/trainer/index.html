@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Trainer - AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Trainer";
+        var mkdocs_page_input_path = "trainer.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dataloader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Trainer</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-arguments">Command Line Arguments</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-command">Example Command</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#customization">Customization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output">Output</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mimic/">Mimic</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-test/">Command Line - test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-mimic/">Command Line - mimic-data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Trainer</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ac-gan-model-trainer">AC-GAN Model Trainer</h1>
+<p>The AC-GAN Model Trainer is a comprehensive training framework designed to facilitate the efficient training of Auxiliary Classifier Generative Adversarial Networks (AC-GANs). This framework includes setup, execution, and monitoring of the training process, leveraging the capabilities of PyTorch for deep learning tasks.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Flexible Training Configuration</strong>: Customize various training parameters including image size, epochs, latent space dimensionality, and learning rates.</li>
+<li><strong>Dual Model Architecture</strong>: Simultaneously trains a Generator and a Discriminator model, incorporating class labels into the generative process.</li>
+<li><strong>Progress Monitoring</strong>: Provides options for real-time progress display or logging, including loss metrics and epoch details.</li>
+<li><strong>Checkpoint Saving</strong>: Automatically saves model checkpoints and generated image samples at specified intervals.</li>
+<li><strong>Device Compatibility</strong>: Supports training on different devices including CPUs, GPUs, and Apple's Metal Performance Shaders (MPS).</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python 3.x</li>
+<li>PyTorch</li>
+<li>Torchvision</li>
+<li>NumPy</li>
+<li>Matplotlib (optional, for image visualization)</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Ensure you have PyTorch installed along with the other required packages. Installation instructions for PyTorch can be found at <a href="https://pytorch.org/get-started/locally/">the official PyTorch website</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>The trainer can be executed from the command line with various options to customize the training process:</p>
+<h3 id="command-line-arguments">Command Line Arguments</h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--image_size</code></td>
+<td>Size of the images to generate (square).</td>
+<td>64</td>
+</tr>
+<tr>
+<td><code>--num_epochs</code></td>
+<td>Total number of training epochs.</td>
+<td>200</td>
+</tr>
+<tr>
+<td><code>--latent_space</code></td>
+<td>Dimensionality of the latent space.</td>
+<td>50</td>
+</tr>
+<tr>
+<td><code>--in_channels</code></td>
+<td>Number of input channels (e.g., 3 for RGB).</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>--learning_rate</code></td>
+<td>Learning rate for the Adam optimizer.</td>
+<td>0.0002</td>
+</tr>
+<tr>
+<td><code>--beta1</code></td>
+<td>Beta1 hyperparameter for Adam optimizer.</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td><code>--display</code></td>
+<td>Display training progress on stdout.</td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>--device</code></td>
+<td>Device to run the training on (<code>cuda</code>, <code>cpu</code>).</td>
+<td><code>cuda</code></td>
+</tr>
+<tr>
+<td><code>--train</code></td>
+<td>Flag to initiate the training process.</td>
+<td>Not applicable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-command">Example Command</h3>
+<pre><code class="language-shell">python trainer.py --train --image_size 64 --num_epochs 200 --latent_space 100 --in_channels 3 --learning_rate 0.0002 --beta1 0.5 --display True --device cuda
+</code></pre>
+<p>This command initiates the training of an AC-GAN model with 64x64 RGB images, using a 100-dimensional latent space, for 200 epochs on a CUDA-enabled device.</p>
+<h2 id="customization">Customization</h2>
+<ul>
+<li><strong>Model Parameters</strong>: Adapt the generator and discriminator architectures within their respective classes to experiment with different GAN configurations.</li>
+<li><strong>Training Loop</strong>: Modify the training loop in the <code>Trainer</code> class to include additional logging, metrics, or custom behavior during the training process.</li>
+<li><strong>Data Preparation</strong>: Use the <code>load_dataloader</code> utility to customize the preprocessing and loading of your dataset for training.</li>
+</ul>
+<h2 id="output">Output</h2>
+<ul>
+<li><strong>Model Checkpoints</strong>: Saved models during training, located in the directory specified by <code>TRAIN_MODELS</code> and <code>BEST_MODELS</code> in <code>config.py</code>.</li>
+<li><strong>Generated Images</strong>: Sample images generated during training are saved at intervals defined in the training parameters, facilitating visual progress tracking.</li>
+<li><strong>Loss Metrics</strong>: Training loss for both the generator and discriminator is logged, allowing for performance evaluation over time.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../discriminator/" class="btn btn-neutral float-left" title="Discriminator"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../test/" class="btn btn-neutral float-right" title="Test">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../discriminator/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../test/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

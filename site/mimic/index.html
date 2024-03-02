@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Mimic - AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mimic";
+        var mkdocs_page_input_path = "mimic.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dataloader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trainer/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Test</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Mimic</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command-Line Interface</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-command">Example Command</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#key-methods">Key Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output">Output</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-test/">Command Line - test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-mimic/">Command Line - mimic-data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Mimic</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mimic-data-generation-using-ac-gan">Mimic Data Generation Using AC-GAN</h1>
+<p>The <code>MimicSamples</code> class extends the <code>Test</code> class functionality to generate and save a large number of images mimicking the original dataset's distribution using a trained AC-GAN model. This tool is designed to augment datasets or create synthetic datasets for various applications, including but not limited to training machine learning models where data is scarce.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Label-specific Image Generation</strong>: Generates images for specific labels in the dataset, allowing for targeted dataset augmentation.</li>
+<li><strong>High-volume Production</strong>: Capable of generating thousands of samples to significantly augment your dataset.</li>
+<li><strong>Flexible Device Support</strong>: Supports computation on different devices (CPU, CUDA, MPS) for efficient image generation.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.x</li>
+<li>PyTorch</li>
+<li>Matplotlib</li>
+<li>tqdm</li>
+<li>A pre-trained AC-GAN model saved as a <code>.pth</code> file.</li>
+<li>The <code>utils.py</code> and <code>config.py</code> scripts for utility functions and configuration paths.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<h3 id="command-line-interface">Command-Line Interface</h3>
+<p>The script provides a command-line interface (CLI) for easy use and integration into data processing pipelines.</p>
+<h4 id="arguments">Arguments</h4>
+<ul>
+<li><code>--model_path</code>: Path to the saved AC-GAN model. If not provided, the script attempts to use the best model based on saved checkpoints.</li>
+<li><code>--latent_space</code>: The dimensionality of the latent space for the generator. Default is 50.</li>
+<li><code>--device</code>: The computation device to use ('cuda', 'cpu', or 'mps'). Default is 'mps'.</li>
+<li><code>--num_samples</code>: The number of images to generate for each label in the dataset. Default is 3000.</li>
+</ul>
+<h4 id="example-command">Example Command</h4>
+<pre><code class="language-bash">python mimic_samples.py --model_path path/to/model.pth --latent_space 50 --device cuda --num_samples 3000
+</code></pre>
+<p>This command generates 3000 samples for each label using the specified AC-GAN model, with computations performed on a CUDA device.</p>
+<h3 id="key-methods">Key Methods</h3>
+<ul>
+<li><code>fetch_label()</code>: Retrieves a mapping of labels to class names from the dataset.</li>
+<li><code>generate_nose_samples(label)</code>: Generates noise vectors and corresponding labels for image generation.</li>
+<li><code>save_generated_images(images, label_name)</code>: Saves the generated images to a directory specific to each label.</li>
+<li><code>generate_mimic_samples()</code>: Main method to generate and save mimic samples using the pre-trained AC-GAN model.</li>
+</ul>
+<h2 id="output">Output</h2>
+<p>Generated images are saved in the directory specified by the <code>MIMIC_PATH</code> variable in <code>config.py</code>. Each class of images is saved in its subdirectory named after the class label.</p>
+<h2 id="example">Example</h2>
+<p>After executing the script with the example command, the mimic data is structured as follows:</p>
+<pre><code>/mimic_data/
+    /class_0/
+        0.png
+        1.png
+        ...
+    /class_1/
+        0.png
+        1.png
+        ...
+</code></pre>
+<p>This structure facilitates easy integration of the generated data into existing datasets or use in training new models.</p>
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li>Ensure the <code>MIMIC_PATH</code> directory exists or is correctly specified in <code>config.py</code>.</li>
+<li>Adjust the <code>--latent_space</code> and <code>--num_samples</code> according to the requirements of your specific use case.</li>
+<li>The class can be easily extended or modified for more customized data generation tasks.</li>
+</ul>
+<p>By leveraging the capabilities of AC-GANs, the <code>MimicSamples</code> class provides a powerful tool for dataset augmentation, enabling the creation of diverse and balanced datasets for training robust machine learning models.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../test/" class="btn btn-neutral float-left" title="Test"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cli-test/" class="btn btn-neutral float-right" title="Command Line - test">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../test/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cli-test/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

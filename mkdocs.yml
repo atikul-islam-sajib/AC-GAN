@@ -1,0 +1,20 @@
+site_name: AC-GAN - Auxiliary Classifier GAN
+
+nav:
+  - Home: index.md
+  - DataLoader: dataloader.md
+  - Generator: generator.md
+  - Discriminator: discriminator.md
+  - Trainer: trainer.md
+  - Test: test.md
+  - Mimic: mimic.md
+  - Command Line - test: cli-test.md
+  - Command Line - mimic-data: cli-mimic.md
+  - Utils: utils.md
+
+theme: readthedocs
+plugins:
+  - mkdocstrings
+
+extra_css:
+  - css/custom.css

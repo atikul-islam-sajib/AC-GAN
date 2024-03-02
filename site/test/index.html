@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Test - AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Test";
+        var mkdocs_page_input_path = "test.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dataloader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trainer/">Trainer</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Test</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-and-requirements">Setup and Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to Use</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#running-as-a-standalone-script">Running as a Standalone Script</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters-and-attributes">Parameters and Attributes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example Usage</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mimic/">Mimic</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-test/">Command Line - test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-mimic/">Command Line - mimic-data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Test</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gan-model-tester-documentation">GAN Model Tester Documentation</h1>
+<p>This document provides a comprehensive guide on how to use the <code>Test</code> class for generating and visualizing predictions from a trained Generator model in a GAN architecture.</p>
+<h2 id="overview">Overview</h2>
+<p>The <code>Test</code> class is designed to facilitate the evaluation of GAN models by generating images using a trained generator. It allows for the visualization of generated images and supports the creation of a GIF to showcase the model's performance over training epochs.</p>
+<h2 id="setup-and-requirements">Setup and Requirements</h2>
+<p>Ensure you have the following setup before proceeding:</p>
+<ul>
+<li>Python environment with required libraries: <code>torch</code>, <code>matplotlib</code>, <code>imageio</code>, and <code>numpy</code>.</li>
+<li>A trained Generator model saved as a <code>.pth</code> file.</li>
+<li>The <code>generator.py</code> script defining the Generator model class.</li>
+<li><code>utils.py</code> script containing utility functions like <code>device_init</code> and <code>load_pickle</code>.</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Model Testing</strong>: Load a trained Generator model to generate images.</li>
+<li><strong>Visualization</strong>: Visualize generated images with support for specifying the number of samples and labels for generation.</li>
+<li><strong>GIF Creation</strong>: Create a GIF from images generated during training to visualize the model's learning progress.</li>
+</ul>
+<h2 id="how-to-use">How to Use</h2>
+<h3 id="running-as-a-standalone-script">Running as a Standalone Script</h3>
+<p>Navigate to the directory containing the <code>test.py</code> script and run the following command in your terminal:</p>
+<pre><code class="language-bash">python test.py --model_path path/to/your/model.pth --num_samples 20 --label 1 --latent_space 50 --device cuda
+</code></pre>
+<h2 id="parameters-and-attributes">Parameters and Attributes</h2>
+<p>The <code>Test</code> class accepts several parameters at initialization:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>best_model_path</code></td>
+<td>str</td>
+<td>Path to the best model's state dictionary.</td>
+</tr>
+<tr>
+<td><code>num_samples</code></td>
+<td>int</td>
+<td>Number of sample images to generate.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>int</td>
+<td>Specific label for generating images.</td>
+</tr>
+<tr>
+<td><code>latent_space</code></td>
+<td>int</td>
+<td>Dimension of the latent space for the generator.</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td>str</td>
+<td>Computational device ('cuda', 'cpu', 'mps').</td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<ul>
+<li><code>__setup__</code>: Sets up the device for computation and loads necessary training parameters.</li>
+<li><code>select_optimal_model</code>: Selects and loads the best-performing model based on saved checkpoints.</li>
+<li><code>visualize_predictions</code>: Visualizes generated images.</li>
+<li><code>generate_noise_samples</code>: Generates noise samples for the generator input.</li>
+<li><code>test</code>: Main method for loading the model, generating images, and visualizing them.</li>
+<li><code>create_gif_file</code>: Generates a GIF from images saved during training to visualize progress.</li>
+</ul>
+<h2 id="example-usage">Example Usage</h2>
+<pre><code class="language-bash">python test.py --num_samples 4 --label 0 --latent_space 100 --device cuda
+</code></pre>
+<p>This command will load the best model (or the one specified), generate 4 images for label 0 with a latent space dimension of 100, and run the model on the CUDA device. Generated images will be visualized, and a GIF showing training progress will be created.</p>
+<p>Ensure paths in <code>config.py</code> are correctly set for <code>BEST_MODELS</code>, <code>TEST_IMAGE_PATH</code>, and <code>TRAIN_GIF_PATH</code> to avoid path-related errors.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../trainer/" class="btn btn-neutral float-left" title="Trainer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mimic/" class="btn btn-neutral float-right" title="Mimic">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../trainer/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../mimic/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

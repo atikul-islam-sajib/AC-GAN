@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Discriminator - AC-GAN - Auxiliary Classifier GAN</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Discriminator";
+        var mkdocs_page_input_path = "discriminator.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AC-GAN - Auxiliary Classifier GAN
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dataloader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Discriminator</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters-and-attributes">Parameters and Attributes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor-parameters">Constructor Parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-arguments">Command-Line Arguments</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-command">Example Command</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output">Output</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trainer/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mimic/">Mimic</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-test/">Command Line - test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli-mimic/">Command Line - mimic-data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../utils.md">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AC-GAN - Auxiliary Classifier GAN</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Discriminator</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="discriminator-for-gan-models">Discriminator for GAN Models</h1>
+<p>This Discriminator module is an essential component for GAN (Generative Adversarial Network) models, aimed at distinguishing real images from those generated by a generator. It's designed to work with images of various sizes and can classify images into multiple categories. Below is the comprehensive guide on how to set up, use, and integrate this module into your machine learning projects.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Flexible Input</strong>: Supports both grayscale and RGB images through adjustable input channels.</li>
+<li><strong>Multi-class Classification</strong>: Capable of classifying images into several predefined classes besides performing the real vs. generated discrimination.</li>
+<li><strong>Configurable Architecture</strong>: Allows customization of the neural network layers to suit different complexities and requirements of datasets.</li>
+<li><strong>Efficient Training</strong>: Implements LeakyReLU activation and optional batch normalization for stable and efficient training.</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python 3.x</li>
+<li>PyTorch (torch, torchvision)</li>
+</ul>
+<p>Ensure these are installed in your Python environment to utilize the Discriminator module effectively.</p>
+<h2 id="setup">Setup</h2>
+<p>Logging is configured to record the model's operations, including the initialization and forward passes, which are saved in <code>./logs/discriminator.log</code>. The module utilizes <code>utils.py</code> for auxiliary functions like calculating the total number of parameters in the model.</p>
+<h2 id="parameters-and-attributes">Parameters and Attributes</h2>
+<h3 id="constructor-parameters">Constructor Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in_channels</code></td>
+<td>int</td>
+<td>The number of input channels (1 for grayscale, 3 for RGB).</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>num_labels</code></td>
+<td>int</td>
+<td>The number of classes for the output classification layer.</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>image_size</code></td>
+<td>int</td>
+<td>Base size of the convolutional filters, affecting model depth.</td>
+<td>64</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<ul>
+<li><strong><code>connected_layer</code></strong>: Dynamically constructs the network layers based on configuration.</li>
+<li><strong><code>forward</code></strong>: Performs a forward pass on input data, returning a tuple of real/fake output and class label logits.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>The module can be executed as a standalone script or imported into other projects. Command-line arguments allow for easy customization of the model's parameters.</p>
+<h3 id="command-line-arguments">Command-Line Arguments</h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--in_channels</code></td>
+<td>Define whether the images are RGB or grayscale.</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>--image_size</code></td>
+<td>Define the size of the images.</td>
+<td>64</td>
+</tr>
+<tr>
+<td><code>--num_labels</code></td>
+<td>Define the number of labels/classes.</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>--netD</code></td>
+<td>Flag to initialize and log the Discriminator.</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-command">Example Command</h3>
+<pre><code class="language-sh">python discriminator.py --in_channels 3 --image_size 64 --num_labels 10 --netD
+</code></pre>
+<p>This command initializes a Discriminator for RGB images (3 channels) with an image size of 64x64, capable of classifying images into 10 different classes.</p>
+<h2 id="output">Output</h2>
+<p>The script initializes the Discriminator model with the specified configurations, logging the model's structure and the total number of trainable parameters to <code>./logs/discriminator.log</code>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../generator/" class="btn btn-neutral float-left" title="Generator"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../trainer/" class="btn btn-neutral float-right" title="Trainer">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../generator/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../trainer/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
