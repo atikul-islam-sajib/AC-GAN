@@ -2,6 +2,7 @@ import sys
 import logging
 import argparse
 import os
+from tqdm import tqdm
 import torch
 import matplotlib.pyplot as plt
 
@@ -147,7 +148,7 @@ class MimicSamples(Test):
 
         labels = self.fetch_label()
 
-        for label, label_name in labels.items():
+        for label, label_name in tqdm(labels.items()):
             noise_samples, specific_label = self.generate_nose_samples(label)
             mimic_images = netG(noise_samples, specific_label)
 
