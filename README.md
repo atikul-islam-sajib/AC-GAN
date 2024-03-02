@@ -180,7 +180,7 @@ The procedure remains consistent with the CUDA and MPS sections, with the device
 
 ## Documentation
 
-For detailed documentation on the implementation and usage, visit the -> [AC-GAN Documentation](https://atikul-islam-sajib.github.io/LSGAN-deploy/).
+For detailed documentation on the implementation and usage, visit the -> [AC-GAN Documentation](https://atikul-islam-sajib.github.io/AC-GAN-deploy/).
 
 ## Contributing
 
